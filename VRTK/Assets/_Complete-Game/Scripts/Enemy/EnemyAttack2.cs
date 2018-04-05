@@ -20,7 +20,7 @@ namespace CompleteProject
         void Awake ()
         {
             // Setting up the references.
-            player = GameObject.FindGameObjectWithTag ("Target");
+            player = CTargetManager._instance.GetRandomTarget();
             playerHealth = player.GetComponent <PlayerHealth> ();
             enemyHealth = GetComponent<EnemyHealth2>();
             anim = GetComponent <Animator> ();

@@ -40,15 +40,14 @@ public class EnemyAI : MonoBehaviour
 			navAgent.isStopped = true;
 		}
 
-        positionPlayer = GameObject.FindGameObjectWithTag("Target");
-
+        positionPlayer = CTargetManager._instance.GetRandomTarget();
     }
 
 	void OnTriggerEnter (Collider other)
 	{
-
+        
 		if (enmHealth.health > 0) {
-			if (navMeshEnable && other.gameObject.tag.Equals ("Player")) {
+            if (navMeshEnable && other.gameObject.tag.Equals ("Target")) {
 				navAgent.isStopped = false;
 				PlayerVisible = true;
 
@@ -56,8 +55,7 @@ public class EnemyAI : MonoBehaviour
 		}
 
 	}
-
- 
+    
 	void SetMaxSpeed ()
 	{
 		if (navMeshEnable && PlayerVisible) {

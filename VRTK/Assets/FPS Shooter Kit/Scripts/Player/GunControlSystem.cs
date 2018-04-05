@@ -147,8 +147,7 @@ public class GunControlSystem : MonoBehaviour
 	}
 
 	void GunShot ()
-	{
-		
+	{		
 		foreach (Bullet nRay in seletedRay) {
 		
 			RaycastHit hit = new RaycastHit ();
@@ -161,11 +160,8 @@ public class GunControlSystem : MonoBehaviour
 					HitBlood.transform.rotation = hit.transform.rotation;
 					EnemyDamage enemDamage = hit.collider.gameObject.GetComponent<EnemyDamage> ();
 					enemDamage.SetDamage (gunDamage);
-
-				}
-					
-			}	
-			
+				}					
+			}				
 		}
 
 		Shot = false;

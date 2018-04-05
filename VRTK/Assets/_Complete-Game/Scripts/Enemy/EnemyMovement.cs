@@ -14,7 +14,7 @@ namespace CompleteProject
         void Awake ()
         {
             // Set up the references.
-            player = GameObject.FindGameObjectWithTag ("Target").transform;
+            player = CTargetManager._instance.GetRandomTarget().transform;
             playerHealth = player.GetComponent <PlayerHealth> ();
             enemyHealth = GetComponent <EnemyHealth2> ();
             nav = GetComponent <UnityEngine.AI.NavMeshAgent> ();

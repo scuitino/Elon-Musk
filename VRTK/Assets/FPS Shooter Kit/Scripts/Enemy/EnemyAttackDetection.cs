@@ -9,8 +9,7 @@ public class EnemyAttackDetection : MonoBehaviour
 
 	void OnTriggerEnter (Collider other)
 	{
-
-		if (other.gameObject.tag.Equals ("Player")) {
+		if (other.gameObject.tag.Equals ("Target")) {
 			attack = true;
 		}
 
@@ -19,7 +18,7 @@ public class EnemyAttackDetection : MonoBehaviour
 	void OnTriggerExit (Collider other)
 	{
 
-		if (other.gameObject.tag.Equals ("Player")) {
+		if (other.gameObject.tag.Equals ("Target")) {
 			attack = false;
 		}
 

@@ -13,7 +13,6 @@ public class EnemyDamage : MonoBehaviour
 	{
 		enemyAI.Hited = true;
 		Health.SetDamage (damage);
-
 	}
 
 	public void  SetDamage (int bulletdamage)
@@ -22,5 +21,4 @@ public class EnemyDamage : MonoBehaviour
 		Health.SetDamage (damage + bulletdamage);
 
 	}
-
 }
