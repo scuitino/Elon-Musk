@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnitySampleAssets.CrossPlatformInput;
+//using UnitySampleAssets.CrossPlatformInput;
 
 namespace CompleteProject
 {
@@ -109,7 +109,7 @@ namespace CompleteProject
                 if(enemyHealth != null)
                 {
                     // ... the enemy should take damage.
-                    enemyHealth.TakeDamage (damagePerShot, shootHit.point);
+                    //enemyHealth.TakeDamage (damagePerShot, shootHit.point);
                 }
 
                 // Set the second position of the line renderer to the point the raycast hit.

@@ -7,7 +7,7 @@ namespace CompleteProject
     {
         Transform player;               // Reference to the player's position.
         PlayerHealth playerHealth;      // Reference to the player's health.
-        EnemyHealth enemyHealth;        // Reference to this enemy's health.
+        EnemyHealth2 enemyHealth;        // Reference to this enemy's health.
         UnityEngine.AI.NavMeshAgent nav;               // Reference to the nav mesh agent.
 
 
@@ -16,7 +16,7 @@ namespace CompleteProject
             // Set up the references.
             player = GameObject.FindGameObjectWithTag ("Target").transform;
             playerHealth = player.GetComponent <PlayerHealth> ();
-            enemyHealth = GetComponent <EnemyHealth> ();
+            enemyHealth = GetComponent <EnemyHealth2> ();
             nav = GetComponent <UnityEngine.AI.NavMeshAgent> ();
         }
 
