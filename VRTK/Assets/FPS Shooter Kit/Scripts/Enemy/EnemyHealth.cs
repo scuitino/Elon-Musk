@@ -10,7 +10,6 @@ public class EnemyHealth : MonoBehaviour
 
 	public void SetDamage (float damage)
 	{
-        Debug.Log(_health);
 		_health -= damage;
 	}
 

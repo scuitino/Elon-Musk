@@ -4182,7 +4182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 0}
-  Damage: 50
+  Damage: 10
   Enemyhealth: {fileID: 114941198767902566}
 --- !u!114 &114683143692900382
 MonoBehaviour:
