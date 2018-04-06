@@ -4,21 +4,12 @@ using UnityEngine;
 
 public class EnemyDamage : MonoBehaviour
 {
-
-	public int damage = 1;
 	public EnemyHealth Health;
 	public EnemyAI enemyAI;
 
-	public void  SetDamage ()
+	public void  SetDamage (float bulletdamage)
 	{
 		enemyAI.Hited = true;
-		Health.SetDamage (damage);
-	}
-
-	public void  SetDamage (int bulletdamage)
-	{
-		enemyAI.Hited = true;
-		Health.SetDamage (damage + bulletdamage);
-
+		Health.SetDamage (bulletdamage);
 	}
 }

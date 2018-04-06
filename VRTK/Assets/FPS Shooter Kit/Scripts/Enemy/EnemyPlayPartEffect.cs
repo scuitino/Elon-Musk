@@ -94,7 +94,7 @@ public class EnemyPlayPartEffect : MonoBehaviour
 			PlayParticleEffect ();
 		}
 
-		if (EnmHealth.health <= 0 && !EnemyDeath) {
+		if (EnmHealth._health <= 0 && !EnemyDeath) {
 
 			EnemyDeath = true;
 

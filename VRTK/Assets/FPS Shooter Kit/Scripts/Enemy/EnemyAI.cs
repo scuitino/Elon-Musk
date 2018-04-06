@@ -46,7 +46,7 @@ public class EnemyAI : MonoBehaviour
 	void OnTriggerEnter (Collider other)
 	{
         
-		if (enmHealth.health > 0) {
+		if (enmHealth._health > 0) {
             if (navMeshEnable && other.gameObject.tag.Equals ("Target")) {
 				navAgent.isStopped = false;
 				PlayerVisible = true;
@@ -70,7 +70,7 @@ public class EnemyAI : MonoBehaviour
 	void SetBehavior ()
 	{
 
-		if (enmHealth.health > 0) {
+		if (enmHealth._health > 0) {
 
 			if (!Hited) {
 
@@ -129,7 +129,7 @@ public class EnemyAI : MonoBehaviour
 				Hited = false;
 			}
 		}
-		if (enmHealth.health <= 0) {
+		if (enmHealth._health <= 0) {
 			navAgent.enabled = false;
 			enemyBehContrl.CurrentBehavior = EnemyBehaviorList.Dead;
 			enmHealth.DeactivateCollider ();
@@ -145,7 +145,7 @@ public class EnemyAI : MonoBehaviour
 
 		bool AnimIsBlocked = false;
 
-		if (enmHealth.health > 0) {
+		if (enmHealth._health > 0) {
 			if (AnimationBlock.Length > 0 && PlayerVisible) {
 
 

@@ -18,7 +18,7 @@ public class EnemyAttack : MonoBehaviour
 
     void OnTriggerEnter (Collider PlayerCollider)
 	{
-		if (PlayerCollider.tag.Equals ("Target") && Enemyhealth.health > 0) {
+		if (PlayerCollider.tag.Equals ("Target") && Enemyhealth._health > 0) {
 		
 			//Health	playerHealth = PlayerCollider.gameObject.GetComponent<Health> ();
             //playerHealth.SetDamage (Damage);

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Target
+  - HitedEnemy
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Shootable
   - LightMask
   - Invisible
-  - 
+  - Fire
   - 
   - 
   - 

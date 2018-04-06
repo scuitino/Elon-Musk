@@ -5,27 +5,24 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
 
-	public int health = 100;
-	public Collider[] colliderList = new Collider[1];
+	public float _health = 100;
+	public Collider[] _colliderList = new Collider[1];
 
-	public void SetDamage (int damage)
+	public void SetDamage (float damage)
 	{
-
-		health -= damage;
-
+        Debug.Log(_health);
+		_health -= damage;
 	}
 
 	public void DeactivateCollider ()
 	{
-
-		for (int i = 0; i < colliderList.Length; i++) {
-
-			colliderList [i].enabled = false;
-			
+		for (int i = 0; i < _colliderList.Length; i++) {
+			_colliderList [i].enabled = false;			
 		}
-	
-
 	}
 
-
+    public void TakeDamage(int aDamage)
+    {
+        _health -= aDamage;
+    }
 }
