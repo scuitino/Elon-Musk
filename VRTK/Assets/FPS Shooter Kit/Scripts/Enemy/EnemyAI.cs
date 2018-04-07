@@ -8,7 +8,7 @@ public class EnemyAI : MonoBehaviour
 
 	public bool navMeshEnable = true;
 	public UnityEngine.AI.NavMeshAgent navAgent;
-	public GameObject positionPlayer;
+	public GameObject positionTarget;
 	public EnemyBehaviorControl enemyBehContrl;
 	public EnemyAttackDetection attackDetection;
 	public EnemyHealth enmHealth;
@@ -40,7 +40,7 @@ public class EnemyAI : MonoBehaviour
 			navAgent.isStopped = true;
 		}
 
-        positionPlayer = CTargetManager._instance.GetRandomTarget();
+        positionTarget = CTargetManager._instance.GetRandomTarget();
     }
 
 	void OnTriggerEnter (Collider other)
@@ -78,7 +78,7 @@ public class EnemyAI : MonoBehaviour
 
 					if (!navAgent.isStopped) {
 
-						navAgent.SetDestination (positionPlayer.transform.position);
+						navAgent.SetDestination (positionTarget.transform.position);
 				
 						if (navAgent.remainingDistance <= minDistance) {
 							maxSpeed = 1f;
@@ -134,8 +134,6 @@ public class EnemyAI : MonoBehaviour
 			enemyBehContrl.CurrentBehavior = EnemyBehaviorList.Dead;
 			enmHealth.DeactivateCollider ();
 		}
-
-
 	}
 
 

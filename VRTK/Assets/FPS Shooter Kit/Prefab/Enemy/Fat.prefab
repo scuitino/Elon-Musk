@@ -4290,6 +4290,7 @@ MonoBehaviour:
   - {fileID: 65274405268445794}
   - {fileID: 65378721997036480}
   - {fileID: 65285197802584474}
+  _destroyDelay: 5
 --- !u!114 &114999892685928370
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -5,7 +5,7 @@ namespace VRTK
     using System.Collections;
 #if UNITY_5_5_OR_NEWER
     using UnityEngine.AI;
-#endif
+#endif   
 
     /// <summary>
     /// Event Payload
@@ -41,6 +41,10 @@ namespace VRTK
         public VRTK_PolicyList targetListPolicy;
         [Tooltip("The max distance the teleport destination can be outside the nav mesh to be considered valid. If a value of `0` is given then the nav mesh restrictions will be ignored.")]
         public float navMeshLimitDistance = 0f;
+
+        // to change navmesh
+        [SerializeField]
+        CRecalculateNavMesh _navMeshCalculate;
 
         /// <summary>
         /// Emitted when the teleport process has begun.
@@ -366,6 +370,8 @@ namespace VRTK
         {
             VRTK_SDK_Bridge.HeadsetFade(Color.clear, fadeInTime);
             fadeInTime = 0f;
+            // recalculate navmesh
+            _navMeshCalculate.Recalculate();
         }
 
         protected virtual IEnumerator InitListenersAtEndOfFrame()
