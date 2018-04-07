@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using CompleteProject;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +15,10 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField]
     float _destroyDelay;
 
+    // score for killing this monster
+    [SerializeField]
+    int _scoreValue;
+
     // damage the enemy
 	public void SetDamage (float damage)
 	{
@@ -26,9 +31,15 @@ public class EnemyHealth : MonoBehaviour
 		for (int i = 0; i < _colliderList.Length; i++) {
 			_colliderList [i].enabled = false;			
 		}
-        StartCoroutine(DestroyEnemy());
-	}
 
+        // destroy corpse
+        StartCoroutine(DestroyEnemy());
+
+        // Increase the score by the enemy's score value.
+        ScoreManager.score += _scoreValue;
+    }
+
+    // to destroy the corpse after he die
     IEnumerator DestroyEnemy()
     {
         yield return new WaitForSeconds(_destroyDelay);

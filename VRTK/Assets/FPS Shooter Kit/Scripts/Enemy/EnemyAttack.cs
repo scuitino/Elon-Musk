@@ -6,30 +6,23 @@ using CompleteProject;
 public class EnemyAttack : MonoBehaviour
 {
     [SerializeField]
-    PlayerHealth playerHealth;                  // Reference to the player's health.
+    CTarget _targetScript;                  // Reference to the targetScript.
     public int Damage = 80;
 	public EnemyHealth Enemyhealth;
 
     private void Start()
     {
         // Setting up the references.
-        playerHealth = CTargetManager._instance.GetRandomTarget().GetComponent<PlayerHealth>();
+        _targetScript = CTargetManager._instance.GetRandomTarget().GetComponent<CTarget>();
     }
 
-    void OnTriggerEnter (Collider PlayerCollider)
+    void OnTriggerEnter (Collider tTargetCollider)
 	{
-		if (PlayerCollider.tag.Equals ("Target") && Enemyhealth._health > 0) {
-		
-			//Health	playerHealth = PlayerCollider.gameObject.GetComponent<Health> ();
-            //playerHealth.SetDamage (Damage);
-
+        Debug.Log("que pasa aca");
+		if (tTargetCollider.tag.Equals ("Target") && Enemyhealth._health > 0)
+        {		
             // ... damage the player.
-                playerHealth.TakeDamage (Damage);
-
+            PlayerHealth._instance.TakeDamage(Damage);
 		}
-
 	}
-
-
-
 }

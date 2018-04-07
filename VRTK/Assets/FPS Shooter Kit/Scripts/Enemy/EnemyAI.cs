@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using EnemyBehavior;
+using CompleteProject;
 
 public class EnemyAI : MonoBehaviour
 {
@@ -18,6 +19,12 @@ public class EnemyAI : MonoBehaviour
 	public float minDistance = 5f;
 	public int attackCount = 0;
 	public string AnimationIdle, AnimationIdleOther;
+
+    // Player health script
+    PlayerHealth _playerHealth;
+
+    // to know if the enemy is dead
+    bool _isDead;
 
 	[HideInInspector]public bool Hited = false;
 
@@ -40,7 +47,10 @@ public class EnemyAI : MonoBehaviour
 			navAgent.isStopped = true;
 		}
 
+
+        // Setting up references
         positionTarget = CTargetManager._instance.GetRandomTarget();
+        _playerHealth = PlayerHealth._instance;
     }
 
 	void OnTriggerEnter (Collider other)
@@ -70,7 +80,7 @@ public class EnemyAI : MonoBehaviour
 	void SetBehavior ()
 	{
 
-		if (enmHealth._health > 0) {
+		if (enmHealth._health > 0 && !_playerHealth.IsDead()) {
 
 			if (!Hited) {
 
@@ -129,7 +139,8 @@ public class EnemyAI : MonoBehaviour
 				Hited = false;
 			}
 		}
-		if (enmHealth._health <= 0) {
+		if (enmHealth._health <= 0 && !_isDead) {
+            _isDead = true;
 			navAgent.enabled = false;
 			enemyBehContrl.CurrentBehavior = EnemyBehaviorList.Dead;
 			enmHealth.DeactivateCollider ();
@@ -140,7 +151,6 @@ public class EnemyAI : MonoBehaviour
 
 	void BlockingMoveEnemyOnAnimation ()
 	{
-
 		bool AnimIsBlocked = false;
 
 		if (enmHealth._health > 0) {

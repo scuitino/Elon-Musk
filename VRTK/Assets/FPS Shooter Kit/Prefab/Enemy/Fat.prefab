@@ -1785,7 +1785,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1236988002229088}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 29.5, y: 0.76, z: 3.37}
+  m_LocalPosition: {x: 31.02, y: 0.76, z: 3.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4772720853180922}
@@ -3927,7 +3927,7 @@ Animator:
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 90d943bd940048f4e9a5dbab5313e1c9, type: 3}
   m_Controller: {fileID: 9100000, guid: 06bb160a4388adc4f98f1a595d4bb87b, type: 2}
-  m_CullingMode: 1
+  m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
@@ -4012,7 +4012,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   navMeshEnable: 1
   navAgent: {fileID: 195370989777753946}
-  positionPlayer: {fileID: 0}
+  positionTarget: {fileID: 0}
   enemyBehContrl: {fileID: 114509162423901122}
   attackDetection: {fileID: 114800680289720926}
   enmHealth: {fileID: 114941198767902566}
@@ -4181,7 +4181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e299fb0e7e660004f8e2366a4c6118ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 0}
+  _targetScript: {fileID: 0}
   Damage: 10
   Enemyhealth: {fileID: 114941198767902566}
 --- !u!114 &114683143692900382
@@ -4291,6 +4291,7 @@ MonoBehaviour:
   - {fileID: 65378721997036480}
   - {fileID: 65285197802584474}
   _destroyDelay: 5
+  _scoreValue: 50
 --- !u!114 &114999892685928370
 MonoBehaviour:
   m_ObjectHideFlags: 1
