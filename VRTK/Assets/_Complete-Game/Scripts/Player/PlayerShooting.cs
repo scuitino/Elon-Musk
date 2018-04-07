@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-//using UnitySampleAssets.CrossPlatformInput;
+using VRTK;
 
 namespace CompleteProject
 {
@@ -17,7 +17,7 @@ namespace CompleteProject
         AudioSource _gunAudio;
 
         // to use inputs of the controller
-        public VRTK.VRTK_ControllerEvents _controllerEvents;
+        public VRTK_ControllerEvents _controllerEvents;
 
         // A layer mask so the raycast only hits things on the shootable layer.
         int shootableMask;
@@ -44,7 +44,6 @@ namespace CompleteProject
             _gunAudio = GetComponent<AudioSource>();
         }
 
-
         void Update()
         {
             // If the trigger button is being press and it's time to fire...
@@ -68,6 +67,7 @@ namespace CompleteProject
             _fireParticles.Play ();
             StopAllCoroutines();
             StartCoroutine(TurnGunLight(true, 1));
+            VRTK_ControllerHaptics.TriggerHapticPulse(VRTK_ControllerReference.GetControllerReference(1),1,40,0.01f);
         }
 
         // Stop the fire
@@ -79,6 +79,7 @@ namespace CompleteProject
             _fireParticles.Stop();
             StopAllCoroutines();
             StartCoroutine(TurnGunLight(false, 1));
+            VRTK_ControllerHaptics.CancelHapticPulse(VRTK_ControllerReference.GetControllerReference(1));
         }
 
         // To enable light of the gun

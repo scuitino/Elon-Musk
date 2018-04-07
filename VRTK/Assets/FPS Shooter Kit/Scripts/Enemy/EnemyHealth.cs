@@ -32,7 +32,6 @@ public class EnemyHealth : MonoBehaviour
     IEnumerator DestroyEnemy()
     {
         yield return new WaitForSeconds(_destroyDelay);
-        Debug.Log("why mother fucker");
         Destroy(this.gameObject);
         yield return null;
     }

@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 0.022058845, g: 0.022058845, b: 0.022058845, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0
+  m_FogDensity: 0.13
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 0.9546878}
@@ -175,7 +175,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: 1670863908
+  randomSeed: 257008927
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3508,7 +3508,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 2023876516}
   enemy: {fileID: 1236988002229088, guid: 1f30e681523ae55499fcd0dbf2ac7656, type: 2}
-  spawnTime: 12
+  spawnTime: 15
   spawnPoints:
   - {fileID: 933997770}
 --- !u!114 &14871710
@@ -3524,7 +3524,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 2023876516}
   enemy: {fileID: 1236988002229088, guid: 1f30e681523ae55499fcd0dbf2ac7656, type: 2}
-  spawnTime: 9
+  spawnTime: 11
   spawnPoints:
   - {fileID: 1725468539}
 --- !u!114 &14871711
@@ -4675,7 +4675,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: 1901518005
+  randomSeed: 1021579116
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -11392,7 +11392,7 @@ MonoBehaviour:
   m_Center: {x: 0, y: 2, z: 0}
   m_LayerMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 8192
   m_UseGeometry: 1
   m_DefaultArea: 0
   m_IgnoreNavMeshAgent: 1
@@ -11402,7 +11402,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_BuildHeightMesh: 0
-  m_NavMeshData: {fileID: 23800000, guid: f57295d0800da534680cf55b977efcb5, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 2b4dfe8b13120ab46a1b1356915187d9, type: 2}
 --- !u!1 &1394906872
 GameObject:
   m_ObjectHideFlags: 0
@@ -12139,7 +12139,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1236988002229088, guid: 1f30e681523ae55499fcd0dbf2ac7656, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1f30e681523ae55499fcd0dbf2ac7656, type: 2}
@@ -13161,7 +13161,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: -1022222998
+  randomSeed: -1115525597
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -17532,7 +17532,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 2
-  randomSeed: 1218706765
+  randomSeed: -1001103729
   InitialModule:
     serializedVersion: 3
     enabled: 1
