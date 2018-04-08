@@ -45,14 +45,22 @@ namespace CompleteProject
         }
 
         void Update()
-        {
-            // If the trigger button is being press and it's time to fire...
-            if (_controllerEvents.triggerPressed && !_gunIsFiring)
+        {            
+            if (!PlayerHealth._instance.IsDead())
             {
-                // shoot the gun.
-                Shoot ();
+                // If the trigger button is being press and it's time to fire...
+                if (_controllerEvents.triggerPressed && !_gunIsFiring)
+                {
+                    // shoot the gun.
+                    Shoot();
+                }
+                else if (!_controllerEvents.triggerPressed && _gunIsFiring)
+                {
+                    // Stop fire
+                    StopShooting();
+                }
             }
-            else if (!_controllerEvents.triggerPressed && _gunIsFiring) 
+            else
             {
                 StopShooting();
             }

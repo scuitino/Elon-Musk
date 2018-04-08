@@ -76,7 +76,6 @@ namespace CompleteProject
 
             // Set the health bar's value to the current health.
             healthSlider.value = currentHealth;
-            Debug.Log(currentHealth + "health");
 
             // Play the hurt sound effect.
             playerAudio.Play ();

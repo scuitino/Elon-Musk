@@ -18,7 +18,6 @@ public class EnemyAttack : MonoBehaviour
 
     void OnTriggerEnter (Collider tTargetCollider)
 	{
-        Debug.Log("que pasa aca");
 		if (tTargetCollider.tag.Equals ("Target") && Enemyhealth._health > 0)
         {		
             // ... damage the player.

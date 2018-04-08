@@ -79,72 +79,101 @@ public class EnemyAI : MonoBehaviour
 
 	void SetBehavior ()
 	{
+        if (!_playerHealth.IsDead())
+        {
+            if (enmHealth._health > 0)
+            {
 
-		if (enmHealth._health > 0 && !_playerHealth.IsDead()) {
+                if (!Hited)
+                {
 
-			if (!Hited) {
+                    if (PlayerVisible)
+                    {
 
-				if (PlayerVisible) {
+                        if (!navAgent.isStopped)
+                        {
 
-					if (!navAgent.isStopped) {
+                            navAgent.SetDestination(positionTarget.transform.position);
 
-						navAgent.SetDestination (positionTarget.transform.position);
-				
-						if (navAgent.remainingDistance <= minDistance) {
-							maxSpeed = 1f;
-						}
+                            if (navAgent.remainingDistance <= minDistance)
+                            {
+                                maxSpeed = 1f;
+                            }
 
-						if (navAgent.remainingDistance > minDistance + 0.5f) {
+                            if (navAgent.remainingDistance > minDistance + 0.5f)
+                            {
 
-							maxSpeed = 4f;
-						}
+                                maxSpeed = 4f;
+                            }
 
-						if (curSpeed > 0f && curSpeed <= (speedRun)) {
+                            if (curSpeed > 0f && curSpeed <= (speedRun))
+                            {
 
-							enemyBehContrl.CurrentBehavior = EnemyBehaviorList.Walk;
+                                enemyBehContrl.CurrentBehavior = EnemyBehaviorList.Walk;
 
-						} else if (curSpeed > (speedRun)) {
-							enemyBehContrl.CurrentBehavior = EnemyBehaviorList.Run;
-						} else if (curSpeed == 0) {
+                            }
+                            else if (curSpeed > (speedRun))
+                            {
+                                enemyBehContrl.CurrentBehavior = EnemyBehaviorList.Run;
+                            }
+                            else if (curSpeed == 0)
+                            {
 
-							enemyBehContrl.CurrentBehavior = EnemyBehaviorList.Idle;
-						}
-						curSpeed = navAgent.velocity.magnitude;
-					} else {
-						enemyBehContrl.CurrentBehavior = EnemyBehaviorList.Idle;
-					}
-				} else {
-					enemyBehContrl.CurrentBehavior = EnemyBehaviorList.Idle;
-				}
+                                enemyBehContrl.CurrentBehavior = EnemyBehaviorList.Idle;
+                            }
+                            curSpeed = navAgent.velocity.magnitude;
+                        }
+                        else
+                        {
+                            enemyBehContrl.CurrentBehavior = EnemyBehaviorList.Idle;
+                        }
+                    }
+                    else
+                    {
+                        enemyBehContrl.CurrentBehavior = EnemyBehaviorList.Idle;
+                    }
 
 
-				if (attackDetection.attack && attackCount <= 3) {
-			
-					attackCount++;
-					int nAttack = Random.Range (0, (attackList.Length));
-					if (nAttack == attackList.Length) {
-						nAttack = attackList.Length - 1;
-					}
-					enemyBehContrl.CurrentBehavior = attackList [nAttack];
-	
+                    if (attackDetection.attack && attackCount <= 3)
+                    {
 
-				} else if (attackCount > 3) {
-					attackCount = 0;
-					enemyBehContrl.CurrentBehavior = EnemyBehaviorList.Shout;
+                        attackCount++;
+                        int nAttack = Random.Range(0, (attackList.Length));
+                        if (nAttack == attackList.Length)
+                        {
+                            nAttack = attackList.Length - 1;
+                        }
+                        enemyBehContrl.CurrentBehavior = attackList[nAttack];
 
-				} 
-			} else {
-			
-				enemyBehContrl.CurrentBehavior = EnemyBehaviorList.GetHit;
-				Hited = false;
-			}
-		}
-		if (enmHealth._health <= 0 && !_isDead) {
-            _isDead = true;
-			navAgent.enabled = false;
-			enemyBehContrl.CurrentBehavior = EnemyBehaviorList.Dead;
-			enmHealth.DeactivateCollider ();
-		}
+
+                    }
+                    else if (attackCount > 3)
+                    {
+                        attackCount = 0;
+                        enemyBehContrl.CurrentBehavior = EnemyBehaviorList.Shout;
+
+                    }
+                }
+                else
+                {
+
+                    enemyBehContrl.CurrentBehavior = EnemyBehaviorList.GetHit;
+                    Hited = false;
+                }
+            }
+            if (enmHealth._health <= 0 && !_isDead)
+            {
+                _isDead = true;
+                navAgent.enabled = false;
+                enemyBehContrl.CurrentBehavior = EnemyBehaviorList.Dead;
+                enmHealth.DeactivateCollider();
+            }
+        }
+        else
+        {
+            navAgent.enabled = false;
+            enemyBehContrl.CurrentBehavior = EnemyBehaviorList.Idle;
+        }
 	}
 
 
@@ -153,50 +182,45 @@ public class EnemyAI : MonoBehaviour
 	{
 		bool AnimIsBlocked = false;
 
-		if (enmHealth._health > 0) {
-			if (AnimationBlock.Length > 0 && PlayerVisible) {
+        if (!_playerHealth.IsDead())
+        {
+            if (enmHealth._health > 0)
+            {
+                if (AnimationBlock.Length > 0 && PlayerVisible)
+                {
+                    AnimatorStateInfo curAnimation = enemyBehContrl.animator.GetCurrentAnimatorStateInfo(0);
+                    AnimatorStateInfo nexAnimation = enemyBehContrl.animator.GetNextAnimatorStateInfo(0);
 
-
-				AnimatorStateInfo curAnimation = enemyBehContrl.animator.GetCurrentAnimatorStateInfo (0); 
-				AnimatorStateInfo nexAnimation = enemyBehContrl.animator.GetNextAnimatorStateInfo (0);
-
-				foreach (string nAnimation in AnimationBlock) {
-
-					if (curAnimation.IsName (nAnimation)) {
-						AnimIsBlocked = true;
-						int i = (int)curAnimation.normalizedTime;
-
-						if (curAnimation.normalizedTime <= i + 0.9f) {
-						
-							navAgent.isStopped = true;
-
-						} else {
-
-							navAgent.isStopped = false;
-						}
-
-					}
-
-					if (nexAnimation.IsName (nAnimation)) {
-
-						if (nexAnimation.normalizedTime > 0f) {
-
-							navAgent.isStopped = true;
-						}
-
-					}
-
-				}
-
-			}
-
-			if (PlayerVisible && !AnimIsBlocked) {
-
-				navAgent.isStopped = false;
-
-			}
-
-		}
+                    foreach (string nAnimation in AnimationBlock)
+                    {
+                        if (curAnimation.IsName(nAnimation))
+                        {
+                            AnimIsBlocked = true;
+                            int i = (int)curAnimation.normalizedTime;
+                            if (curAnimation.normalizedTime <= i + 0.9f)
+                            {
+                                navAgent.isStopped = true;
+                            }
+                            else
+                            {
+                                navAgent.isStopped = false;
+                            }
+                        }
+                        if (nexAnimation.IsName(nAnimation))
+                        {
+                            if (nexAnimation.normalizedTime > 0f)
+                            {
+                                navAgent.isStopped = true;
+                            }
+                        }
+                    }
+                }
+                if (PlayerVisible && !AnimIsBlocked)
+                {
+                    navAgent.isStopped = false;
+                }
+            }
+        }		
 
 	}
 

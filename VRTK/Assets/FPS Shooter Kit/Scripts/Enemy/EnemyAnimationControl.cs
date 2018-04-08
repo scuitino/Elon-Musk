@@ -73,15 +73,12 @@ public class EnemyAnimationControl : MonoBehaviour
 
 	void ChangingAnimation ()
 	{
-
 		if (currentBehavior != nextBehavior) {
 
 			enemyBehContr.animator.ResetTrigger (FindTriggerAnimation (currentBehavior));
 			currentBehavior = nextBehavior;
 			enemyBehContr.animator.SetTrigger (FindTriggerAnimation (nextBehavior));
-
 		}
-
 	}
 
 
