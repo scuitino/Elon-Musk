@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnitySampleAssets.CrossPlatformInput;
+//using UnitySampleAssets.CrossPlatformInput;
 
 namespace CompleteProject
 {
@@ -32,17 +32,17 @@ namespace CompleteProject
         void FixedUpdate ()
         {
             // Store the input axes.
-            float h = CrossPlatformInputManager.GetAxisRaw("Horizontal");
-            float v = CrossPlatformInputManager.GetAxisRaw("Vertical");
+            //float h = CrossPlatformInputManager.GetAxisRaw("Horizontal");
+            //float v = CrossPlatformInputManager.GetAxisRaw("Vertical");
 
             // Move the player around the scene.
-            Move (h, v);
+            //Move (h, v);
 
             // Turn the player to face the mouse cursor.
             Turning ();
 
             // Animate the player.
-            Animating (h, v);
+            //Animating (h, v);
         }
 
 

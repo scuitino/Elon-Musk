@@ -20,9 +20,18 @@ namespace CompleteProject
         bool isDead;                                                // Whether the player is dead.
         bool damaged;                                               // True when the player gets damaged.
 
+        #region SINGLETON PATTERN
+        public static PlayerHealth _instance = null;
+        #endregion
 
         void Awake ()
         {
+            // SINGLETON check
+            if (_instance == null)
+                _instance = this;
+            else if (_instance != this)
+                Destroy(gameObject);
+
             // Setting up the references.
             playerAudio = GetComponent <AudioSource> ();
 
@@ -48,6 +57,12 @@ namespace CompleteProject
 
             // Reset the damaged flag.
             damaged = false;
+        }
+
+        // to check is de player is dead
+        public bool IsDead()
+        {
+            return isDead;
         }
 
 
